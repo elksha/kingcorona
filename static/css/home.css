@@ -174,13 +174,13 @@
 
 .menu-likelion {
   font-family: NanumGothic;
-  font-weight: bold;
   color: white;
   -webkit-text-fill-color: white;
   text-align: right;
   margin-top: 8px;
   margin-bottom: 8px;
   font-size: 12px;
+  white-space: nowrap;
 }
 .contact-dev {
   margin-top: 30px;
@@ -193,8 +193,7 @@
 .menu-info {
   font-family: NanumGothic;
   margin-top: 3px;
-  font-size: 12px;
-  font-weight: bold;
+  font-size: 13px;
   color: white;
   text-align: right;
 }
@@ -320,6 +319,8 @@ body {
 .pin {
   background-image: url(../img/pin.png);
   background-size: 100%;
+  position: relative;
+  left: -17px;
 }
 .menu_selected {
   opacity: 0.3;
@@ -358,7 +359,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 6px 0 0 10px;
+  padding: 2px 0 0 10px;
   height: 30px;
   background: #eee;
   border-bottom: 1px solid #ddd;
@@ -366,9 +367,8 @@ body {
   font-weight: bold;
 }
 .info .close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
   color: #888;
   width: 17px;
   height: 17px;
@@ -420,7 +420,7 @@ body {
   text-decoration: none;
   font-family: NanumGothic;
   position: relative;
-  top: 4px;
+  top: 0px;
   color: #e55454;
 }
 @media (max-width: 768px) {

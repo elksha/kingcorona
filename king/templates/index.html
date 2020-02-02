@@ -18,9 +18,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>코로나 알리미</title>
         <link href="{% static '/css/normalize.css' %}" rel="stylesheet" type="text/css">
-        <link href="{% static '/css/home.css' %}?type=7" rel="stylesheet" type="text/css">
+        <link href="{% static '/css/home.css' %}?type=8" rel="stylesheet" type="text/css">
         <link href="{% static '/css/common.css' %}" rel="stylesheet" type="text/css">
-        <link href="{% static '/css/modal.css' %}?type=4" rel="stylesheet" type="text/css">
+        <link href="{% static '/css/modal.css' %}?type=5" rel="stylesheet" type="text/css">
 
         <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&display=swap" rel="stylesheet">
     </head>
@@ -57,8 +57,8 @@
                         <div class="contact-dev">Contact</div>
                         <div class="menu-info">withjuwon@gmail.com</div>
                         <div class="contact-dev">개발자</div>
-                        <div class="menu-likelion">고려대학교 멋쟁이사자처럼 출신</div>
                         <div class="menu-info">김준태 박지환 이인우 최주원</div>
+                        <div class="menu-likelion">(고려대학교 멋쟁이사자처럼 출신)</div>
                         <div class="menu-server">서버 비용 후원 : 멋쟁이사자처럼</div>
                     </ul>
                 </nav>
@@ -127,8 +127,8 @@
                     <div class="modal-body__text-list">내 위치 허용 후, 
                       <br/>
                       내 근처 확진자 방문지역과 진료소 확인!</div>
-                    <div class="modal-body__text-list list-center">내 목적지 근처로 확인하기</div>
-                    <div class="modal-body__text-list">사이드 메뉴에서 확진자수와 사망자수 확인하기!</div>
+                    <div class="modal-body__text-list list-center">내 목적지 근처로 확인!</div>
+                    <div class="modal-body__text-list">사이드 메뉴에서 확진자수 현황 확인!</div>
                   </div>
                 </div>
               </div>
@@ -271,7 +271,7 @@
                               '        <div class="body">' +
                               '            <div class="desc">' + 
                               '                <div class="ellipsis">' + storePositions[i].roadaddr + '</div>' + 
-                              '<div class="telroad" style="display: flex; flex-direction: row; justify-content: space-around; position: relative; right: 10px;">' +
+                              '<div class="telroad" style="display: flex; flex-direction: row; justify-content: space-around; position: relative; right: 4px; bottom: 5px;">' +
                               '                <div><div class="smallicons phone"></div><a href="tel:' + storePositions[i].phone + '" target="_blank" class="link">전화걸기</a></div>' + 
                               '                <div><div class="smallicons pin"></div><a href="https://map.kakao.com/link/to/' + storePositions[i].content + ',' + storePositions[i].position_y + ',' + storePositions[i].position_x +'" class="link">길찾기</div>' +
                               '</div>' +
