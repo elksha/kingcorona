@@ -72,16 +72,21 @@
 }
 .modal-body__text {
   margin-left: 11px;
+  padding-top:30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 191px;  
 }
 .modal-body__text-list {
   font-size: 12px;
   font-weight: 800;
   color: #5a5a5a;
-  padding-top: 24px;
+  /* padding-top: 24px; */
 }
 .list-center {
-  padding-top: 66px;
-  padding-bottom: 54px;
+  /* padding-top: 66px; */
+  padding-bottom: 18px;
 }
 .hidden {
   display: none;

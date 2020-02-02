@@ -14,7 +14,7 @@
         {% load static %}
         <meta property="og:image" content="{% static '/img/lala.png' %}" />
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>코로나 알리미</title>
         <link href="{% static '/css/normalize.css' %}" rel="stylesheet" type="text/css">
@@ -49,15 +49,17 @@
                     </div>
                     <ul class="menu-all">
                         <div class="menu-logo">코로나 알리미</div>
-                        <button id="ms1" class="menu-select">코로나 Q&A</button>
-                        <p></p>
-                        <button id="ms2" class="menu-select">코로나 제보 게시판</button>
-                        <p></p>
-                        <button id="ms3"  class="menu-select">코로나 토론 게시판</button>
+                        <div class="menu-time">2.2일 09시 기준</div>
+                        <div id="ms1" class="menu-select" >확진자 수(전날대비)</div>
+                        <div class="menu-numbers">15명(0명 증가)</div>
+                        <div id="ms1" class="menu-select" >사망자 수(전날대비)</div>
+                        <div class="menu-numbers">0명(0명 증가)</div>
                         <div class="contact-dev">Contact</div>
                         <div class="menu-info">withjuwon@gmail.com</div>
                         <div class="contact-dev">개발자</div>
+                        <div class="menu-likelion">고려대학교 멋쟁이사자처럼 출신</div>
                         <div class="menu-info">김준태 박지환 이인우 최주원</div>
+                        <div class="menu-server">서버 비용 후원 : 멋쟁이사자처럼</div>
                     </ul>
                 </nav>
 
@@ -124,9 +126,9 @@
                   <div class="modal-body__text">
                     <div class="modal-body__text-list">내 위치 허용 후, 
                       <br/>
-                      근처 확진자 방문지역과 진료소 확인!</div>
+                      내 근처 확진자 방문지역과 진료소 확인!</div>
                     <div class="modal-body__text-list list-center">내 목적지 근처로 확인하기</div>
-                    <div class="modal-body__text-list">코로나 팩트만을 모아놓은 Q & A 확인!</div>
+                    <div class="modal-body__text-list">사이드 메뉴에서 확진자수와 사망자수 확인하기!</div>
                   </div>
                 </div>
               </div>
@@ -164,7 +166,8 @@
         storeMarkers = [], // 편의점 마커 객체를 가지고 있을 배열입니다
         coffeeOverlays = [],
         storeOverlays = [],
-          
+        searchOverLays = [];
+
         createCoffeeMarkers(); // 커피숍 마커를 생성하고 커피숍 마커 배열에 추가합니다
         createStoreMarkers(); // 편의점 마커를 생성하고 편의점 마커 배열에 추가합니다
 
@@ -179,7 +182,10 @@
                 position: position,
                 image: image
             });
-            
+            // kakao.maps.event.addListener(marker, 'click', function() {
+            // // 마커 위에 인포윈도우를 표시합니다
+            //   infowindow.open(map, marker);  
+            // });
             return marker;  
         }   
           
@@ -266,8 +272,8 @@
                               '            <div class="desc">' + 
                               '                <div class="ellipsis">' + storePositions[i].roadaddr + '</div>' + 
                               '<div class="telroad" style="display: flex; flex-direction: row; justify-content: space-around; position: relative; right: 10px;">' +
-                              '                <div><img class="smallicons" src="{% static "img/phone.png" %}"/><a href="tel:' + storePositions[i].phone + '" target="_blank" class="link">전화걸기</a></div>' + 
-                              '                <div><img class="smallicons" src="{% static "img/pin.png" %}"/><a href="https://map.kakao.com/link/to/' + storePositions[i].content + ',' + storePositions[i].position_y + ',' + storePositions[i].position_x +'" class="link">길찾기</div>' +
+                              '                <div><div class="smallicons phone"></div><a href="tel:' + storePositions[i].phone + '" target="_blank" class="link">전화걸기</a></div>' + 
+                              '                <div><div class="smallicons pin"></div><a href="https://map.kakao.com/link/to/' + storePositions[i].content + ',' + storePositions[i].position_y + ',' + storePositions[i].position_x +'" class="link">길찾기</div>' +
                               '</div>' +
                               '            </div>' + 
                               '        </div>' + 
@@ -300,6 +306,12 @@
             for (var i = 0; i < storeOverlays.length; i++) {  
                 storeOverlays[i].setMap(map);
             }        
+        }
+
+        function setSearchOverlays(map){
+          for(let i=0; i<searchOverLays.length; i++){
+              searchOverLays[i].setMap(null); 
+            }
         }
 
         setCoffeeMarkers(map);
@@ -365,6 +377,10 @@
         
         function makeClickListener(map, overlay) {
           return function() {
+            setCoffeeOverlays(null);
+            setStoreOverlays(null);
+            setSearchOverlays(null);
+            
             overlay.setMap(null);   
             overlay.setMap(map);
           }
@@ -376,6 +392,13 @@
 
         function closeOverlay2() {
             setCoffeeOverlays(null);
+        }
+
+
+        function closeSearchOverLay(){
+            for(let i=0; i<searchOverLays.length; i++){
+              searchOverLays[i].setMap(null);
+            }
         }
 
         </script>
