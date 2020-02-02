@@ -27,7 +27,11 @@ SECRET_KEY = 'b5p-uvm+b$n)apr%yevrsod8gl-qr!x^788cv@q2em0146bvxh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    '54.180.91.228',
+    'corona-nearby.com',
+]
 
 
 # Application definition

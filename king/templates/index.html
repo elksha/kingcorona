@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="naver-site-verification" content="1b4f787ae484bdfcf94f4672b6cef1f4102f013f"/>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-157511016-1"></script>
         <script>
@@ -17,9 +18,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>코로나 알리미</title>
         <link href="{% static '/css/normalize.css' %}" rel="stylesheet" type="text/css">
-        <link href="{% static '/css/home.css' %}?type=6" rel="stylesheet" type="text/css">
+        <link href="{% static '/css/home.css' %}?type=7" rel="stylesheet" type="text/css">
         <link href="{% static '/css/common.css' %}" rel="stylesheet" type="text/css">
-        <link href="{% static '/css/modal.css' %}?type=3" rel="stylesheet" type="text/css">
+        <link href="{% static '/css/modal.css' %}?type=4" rel="stylesheet" type="text/css">
 
         <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&display=swap" rel="stylesheet">
     </head>
@@ -79,11 +80,11 @@
                     <img class="hosp2" src="{% static 'img/hosp.png' %}"/><br>
                     <p id="foot_text">주변 진료소보기</p>
                   </div>
-                  <div id="def1" class="menu_selected" onclick="changeMarker('coffee')">
+                  <div id="def1" style="position: relative; left: 2px;" class="menu_selected" onclick="changeMarker('coffee')">
                     <img class="def2" src="{% static 'img/def.png' %}"/><br>
                     <p id="foot_text">확진자 방문지보기</p>
                   </div>
-                  <div id="rest1" class="none" onclick="changeMarker('carpark')">
+                  <div id="rest1" style="position: relative; left: 15px;" class="none" onclick="changeMarker('carpark')">
                     <img class="rest2" src="{% static 'img/rest2.png' %}" /><br>
                     <p id="foot_text">모두보기</p>
                   </div>
