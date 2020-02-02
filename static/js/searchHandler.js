@@ -1,4 +1,4 @@
-import displayMarker from "./marker.js";
+import {displayMarker} from "./marker.js";
 
 const searchInput = document.querySelector(".search-input-in");
 const searchBtn = document.getElementById("search-btn");
@@ -40,6 +40,7 @@ function placesSearchCB(data, status, pagination) {
     const coords = new kakao.maps.LatLng(data[0].y, data[0].x);
     const place = data[0];
     // search 한걸로 마커
+    map.setLevel(5);
     displayMarker(coords, place);
   }
 }

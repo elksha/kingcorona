@@ -1,3 +1,4 @@
+var markers = [];
 // 지도에 마커와 인포윈도우를 표시하는 함수입니다
 function displayMarker(locPosition, place) {
   // 마커를 생성합니다
@@ -19,8 +20,16 @@ function displayMarker(locPosition, place) {
   }
 
   // 지도 중심좌표를 접속위치로 변경합니다
+  hideMarkers();
   map.setCenter(locPosition);
   marker.setMap(map);
+  markers.push(marker);
 }
 
-export default displayMarker;
+function hideMarkers(){
+  for(let i=0; i<markers.length; i++){
+    markers[i].setMap(null); 
+  }
+}
+
+export {displayMarker, hideMarkers};
