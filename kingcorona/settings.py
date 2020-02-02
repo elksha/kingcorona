@@ -129,6 +129,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+STATIC_ROOT = os.path.join(BASE_DIR,'public')
+
 
 # KAKAO API
 KAKAO_JS_KEY = secrets['KAKAO']['JS_KEY']
