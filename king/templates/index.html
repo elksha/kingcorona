@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-157511016-1"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-157511016-1');
+        </script>
+        {% load static %}
+        <meta property="og:image" content="{% static '/img/lala.png' %}" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>코로나 알리미</title>
+        <link href="{% static '/css/normalize.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static '/css/home.css' %}?type=3" rel="stylesheet" type="text/css">
+        <link href="{% static '/css/common.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static '/css/modal.css' %}?type=2" rel="stylesheet" type="text/css">
+
+        <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <!-- <div id="map" style="width:100%;height:1000px;"></div> -->
+        
+            <div class="map" id="map">
+                <div class="input-back-back">
+                    <div class="input-backg">
+                    <div class="search-input" id="search-input"  type="text" value="">
+                        <input value="" type="text" class="search-input-in" placeholder="목적지를 검색하세요">
+                        <button class="search-btn" id="search-btn">
+                            <img class="search-icon" src="{% static '/img/qna.png' %}"></img>
+                        </button>
+                        </input>
+                    </div>
+                    <div class="menu-open" >
+                        <img class="menu-img" src="{% static '/img/menu.png' %}" alt="menu">
+                    </div>
+                    </div>
+                </div>
+                <nav class="nav">
+                    <div class="menu-close">
+                    <img class="close-icon" src="{% static '/img/closeBtn.png' %}" alt="close">
+                    </div>
+                    <ul class="menu-all">
+                        <div class="menu-logo">코로나 알리미</div>
+                        <button id="ms1" class="menu-select">코로나 Q&A</button>
+                        <p></p>
+                        <button id="ms2" class="menu-select">코로나 제보 게시판</button>
+                        <p></p>
+                        <button id="ms3"  class="menu-select">코로나 토론 게시판</button>
+                        <div class="contact-dev">Contact</div>
+                        <div class="menu-info">withjuwon@gmail.com</div>
+                        <div class="contact-dev">개발자</div>
+                        <div class="menu-info">김준태 박지환 이인우 최주원</div>
+                    </ul>
+                </nav>
+
+                {% comment %} <div class="button-flex">
+                    <button class="button-qna">
+                      <div class="inside-text">
+                          현재 위치 보기
+                      </div>
+                    </button>
+                </div> {% endcomment %}
+
+                <div class="currpos">
+                  <img class="overfoot" src="{% static 'img/curr.png' %}" /><br>
+                </div>
+
+                <div class="foot">
+                  <div class="hosp1" onclick="changeMarker('store')">
+                    <img class="hosp2" src="{% static 'img/hosp.png' %}"/><br>
+                    <p id="foot_text">주변 진료소보기</p>
+                  </div>
+                  <div class="def1" onclick="changeMarker('coffee')">
+                    <img class="def2" src="{% static 'img/def.png' %}"/><br>
+                    <p id="foot_text">확진자 경로보기</p>
+                  </div>
+                  <div class="def1" style="visibility: hidden">
+                    <img class="def2" style="visibility: hidden" src="{% static 'img/def.png' %}" /><br>
+                    확진자 경로보기
+                  </div>
+                </div>
+
+                <div class="overfoot2" onclick="changeMarker('carpark')" >
+                  <img class="rest" src="{% static 'img/rest.png' %}" /><br>
+                  <p id="modu">모두보기</p>
+                </div>
+
+            </div>
+
+        <div class="modal">
+            <div class="modal__overlay"></div>
+            <!-- <div class="modal__content"> -->
+              <div class="modal__content">
+                <div class="modal-header">
+      
+                  <div class="modal-header__title">
+                    <div>
+                      코로나 알리미
+                    </div>
+                    <button class="closeBtn">
+                      <img class="img" src="{% static '/img/closeBtn.png' %}" alt="닫기">
+                    </button>
+                    <div>
+                    </div>
+                  </div>
+                  
+                  <div class="modal-header__subtitle">
+                    내 주변 코로나 정보 확인
+                  </div>
+      
+                </div>
+                <div class="modal-body">
+                  <div class="modal-body__img">
+                    <img class="img" src="{% static '/img/modalList.png' %}" alt="목록">
+                  </div>
+                  <div class="modal-body__text">
+                    <div class="modal-body__text-list">내 위치 허용 후, 
+                      <br/>
+                      근처 위험 지역과 진료소 확인하기</div>
+                    <div class="modal-body__text-list list-center">내 목적지 근처로 확인하기</div>
+                    <div class="modal-body__text-list">코로나 팩트만을 모아놓은 Q & A 확인!</div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey={{ key }}&libraries=services"></script>
+        <script type="text/javascript" src="{% static '/js/map.js' %}"></script>
+        <script>
+        // 마커를 표시할 위치와 title 객체 배열입니다 
+        var coffeePositions = [
+        {% for post in posts %}
+          {
+            content: '{{ post.title }}',
+            latlng: new kakao.maps.LatLng({{ post.position_y }}, {{ post.position_x }}), 
+            desc: '{{ post.description }}'
+          },
+        {% endfor %}
+        ];
+
+// 편의점 마커가 표시될 좌표 배열입니다
+        var storePositions = [
+        {% for care in cares %}
+          {
+            content: '{{ care.title }}',
+            latlng: new kakao.maps.LatLng({{ care.position_y }}, {{ care.position_x }}), 
+            phone: '{{ care.phonenumb }}',
+            roadaddr: '{{ care.description }}'
+          },
+        {% endfor %}
+        ];
+
+        var markerImageSrc = '{% static "img/goodgood.png" %}';  // 마커이미지의 주소입니다. 스프라이트 이미지 입니다
+        coffeeMarkers = [], // 커피숍 마커 객체를 가지고 있을 배열입니다
+        storeMarkers = [], // 편의점 마커 객체를 가지고 있을 배열입니다
+        coffeeOverlays = [],
+        storeOverlays = [],
+          
+        createCoffeeMarkers(); // 커피숍 마커를 생성하고 커피숍 마커 배열에 추가합니다
+        createStoreMarkers(); // 편의점 마커를 생성하고 편의점 마커 배열에 추가합니다
+
+        changeMarker('coffee');
+
+        function createMarkerImage(src, size, options) {
+            var markerImage = new kakao.maps.MarkerImage(src, size, options);
+            return markerImage;            
+        }
+
+        // 좌표와 마커이미지를 받아 마커를 생성하여 리턴하는 함수입니다
+        function createMarker(position, image) {
+            var marker = new kakao.maps.Marker({
+                position: position,
+                image: image
+            });
+            
+            return marker;  
+        }   
+          
+        // 커피숍 마커를 생성하고 커피숍 마커 배열에 추가하는 함수입니다
+        function createCoffeeMarkers() {
+            
+            for (var i = 0; i < coffeePositions.length; i++) {  
+                
+                var imageSize = new kakao.maps.Size(50, 50),
+                    imageOptions = {  
+                        spriteOrigin: new kakao.maps.Point(0, 0),    
+                        spriteSize: new kakao.maps.Size(50, 100)  
+                    };     
+                
+                // 마커이미지와 마커를 생성합니다
+                var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
+                    marker = createMarker(coffeePositions[i].latlng, markerImage);  
+                 
+                var content = '<div class="wrap" id="overdiv">' + 
+                              '    <div class="info" style="">' + 
+                              '        <div class="title">' + coffeePositions[i].content + 
+                              '            <div class="close" onclick="closeOverlay2()" title="닫기"></div>' + 
+                              '        </div>' + 
+                              '        <div class="body">' +
+                              '            <div class="desc">' + 
+                              '                <div class="ellipsis" style="white-space: pre-line;">' + coffeePositions[i].desc + '</div>' + 
+                              '            </div>' + 
+                              '        </div>' + 
+                              '    </div>' +    
+                              '</div>';
+
+                var overlay = new kakao.maps.CustomOverlay({
+                                  content: content,
+                                  map: map,
+                                  position: marker.getPosition()       
+                              });
+
+                kakao.maps.event.addListener(marker, 'click', makeClickListener(map, overlay));
+                //kakao.maps.event.addListener(marker, "click", makeOverListener(map, marker, infowindow));
+                // kakao.maps.event.addListener(marker, 'click', makeOutListener(infowindow));
+                // 생성된 마커를 커피숍 마커 배열에 추가합니다
+                coffeeMarkers.push(marker);
+                coffeeOverlays.push(overlay);  
+            }     
+        }
+
+        // 커피숍 마커들의 지도 표시 여부를 설정하는 함수입니다
+        function setCoffeeMarkers(map) {        
+            for (var i = 0; i < coffeeMarkers.length; i++) {  
+                coffeeMarkers[i].setMap(map);
+            }        
+        }
+
+        function setCoffeeOverlays(map) {        
+            for (var i = 0; i < coffeeOverlays.length; i++) {  
+                coffeeOverlays[i].setMap(map);
+            }        
+        }
+
+        // 편의점 마커를 생성하고 편의점 마커 배열에 추가하는 함수입니다
+        function createStoreMarkers() {
+            for (var i = 0; i < storePositions.length; i++) {
+                
+                var imageSize = new kakao.maps.Size(50, 50),
+                    imageOptions = {   
+                        spriteOrigin: new kakao.maps.Point(0, 50),    
+                        spriteSize: new kakao.maps.Size(50, 100)  
+                    };       
+            
+                // 마커이미지와 마커를 생성합니다
+                var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
+                    marker = createMarker(storePositions[i].latlng, markerImage); 
+                    
+                /*var infowindow = new kakao.maps.InfoWindow({
+                    content: storePositions[i].content
+                });*/
+
+                var content = '<div class="wrap" id="overdiv">' + 
+                              '    <div class="info">' + 
+                              '        <div class="title">' + storePositions[i].content + 
+                              '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
+                              '        </div>' + 
+                              '        <div class="body">' +
+                              '            <div class="desc">' + 
+                              '                <div class="ellipsis">' + storePositions[i].roadaddr + '</div>' + 
+                              '                <div><a href="tel:' + storePositions[i].phone + '" target="_blank" class="link">전화걸기</a></div>' + 
+                              '            </div>' + 
+                              '        </div>' + 
+                              '    </div>' +    
+                              '</div>';
+
+                var overlay = new kakao.maps.CustomOverlay({
+                                  content: content,
+                                  map: map,
+                                  position: marker.getPosition()       
+                              });
+
+                kakao.maps.event.addListener(marker, 'click', makeClickListener(map, overlay));
+                // kakao.maps.event.addListener(marker, "click", makeOverListener(map, marker, infowindow));
+                // kakao.maps.event.addListener(marker, 'click', makeOutListener(infowindow));
+                // 생성된 마커를 편의점 마커 배열에 추가합니다
+                storeMarkers.push(marker);
+                storeOverlays.push(overlay);    
+            }        
+        }
+
+        // 편의점 마커들의 지도 표시 여부를 설정하는 함수입니다
+        function setStoreMarkers(map) {        
+            for (var i = 0; i < storeMarkers.length; i++) {  
+                storeMarkers[i].setMap(map);
+            }        
+        }
+
+        function setStoreOverlays(map) {        
+            for (var i = 0; i < storeOverlays.length; i++) {  
+                storeOverlays[i].setMap(map);
+            }        
+        }
+
+        setCoffeeMarkers(map);
+        setStoreMarkers(map);
+        setCoffeeOverlays(null);
+        setStoreOverlays(null);
+
+        function changeMarker(type){
+            // 현재 지도의 레벨을 얻어옵니다
+            var level = map.getLevel();
+            
+            // 지도를 1레벨 내립니다 (지도가 확대됩니다)
+            map.setLevel(level + 1);
+            // 커피숍 카테고리가 클릭됐을 때
+            if (type === 'coffee') {
+                            
+                // 커피숍 마커들만 지도에 표시하도록 설정합니다
+                setCoffeeMarkers(map);
+                setStoreMarkers(null);
+                
+            } else if (type === 'store') { // 편의점 카테고리가 클릭됐을 때
+                            
+                // 편의점 마커들만 지도에 표시하도록 설정합니다
+                setCoffeeMarkers(null);
+                setStoreMarkers(map);
+                
+            } else if (type === 'carpark') { // 주차장 카테고리가 클릭됐을 때
+            
+                // 주차장 마커들만 지도에 표시하도록 설정합니다
+                setCoffeeMarkers(map);
+                setStoreMarkers(map);
+            }    
+        } 
+
+        function makeOverListener(map, marker, infowindow) {
+          return function() {
+            console.log(infowindow)
+            infowindow.open(map, marker);
+          };
+        }
+
+        function makeOutListener(infowindow) {
+          return function() {
+            infowindow.close();
+          }
+        }
+        
+        function makeClickListener(map, overlay) {
+          return function() {
+            overlay.setMap(null);   
+            overlay.setMap(map);
+          }
+        }
+
+        function closeOverlay() {
+            setStoreOverlays(null);
+        }
+
+        function closeOverlay2() {
+            setCoffeeOverlays(null);
+        }
+
+        </script>
+        <script type="text/javascript" src="{% static '/js/modal.js' %}"></script>
+        <script type="text/javascript" src="{% static '/js/alert.js' %}"></script>
+        <script type="text/javascript" src="{% static '/js/menu.js' %}"></script>
+
+        <script type="module" src="{% static '/js/marker.js' %}"></script>
+        <script type="module" src="{% static '/js/currentPos.js' %}"></script>
+        <script type="module" src="{% static '/js/searchHandler.js' %}"></script>
+    </body>
+</html>
