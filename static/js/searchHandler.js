@@ -40,7 +40,9 @@ function placesSearchCB(data, status, pagination) {
     const coords = new kakao.maps.LatLng(data[0].y, data[0].x);
     const place = data[0];
     // search 한걸로 마커
-    map.setLevel(5);
+    setCoffeeOverlays(null);
+    setStoreOverlays(null);
+    setSearchOverlays(null);
     displayMarker(coords, place);
   }
 }
