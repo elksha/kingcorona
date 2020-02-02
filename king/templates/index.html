@@ -377,6 +377,14 @@
             setCoffeeOverlays(null);
         }
 
+        var searchOverLays = [];
+        
+        function closeSearchOverLay(){
+            for(let i=0; i<searchOverLays.length; i++){
+              searchOverLays[i].setMap(null);
+            }
+        }
+
         </script>
         <script type="text/javascript" src="{% static '/js/modal.js' %}"></script>
         <script type="text/javascript" src="{% static '/js/alert.js' %}"></script>

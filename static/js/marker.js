@@ -7,16 +7,38 @@ function displayMarker(locPosition, place) {
     position: locPosition
   });
 
-  const infowindow = new kakao.maps.InfoWindow({zIndex:1});
+  // const infowindow = new kakao.maps.InfoWindow({zIndex:1});
   // 마커에 클릭이벤트를 등록합니다
   if(place){
+    const content = '<div class="wrap" id="overdiv">' + 
+                              '    <div class="info" style="">' + 
+                              '        <div class="title">' + place.place_name + 
+                              '            <div id="search-overlay" class="close" onclick="closeSearchOverLay()" title="닫기"></div>' + 
+                              '        </div>' + 
+                              '        <div class="body">' +
+                              '            <div class="desc">' + 
+                              '                <div class="ellipsis" style="white-space: pre-line;">' + place.address_name + '</div>' + 
+                              '            </div>' + 
+                              '        </div>' + 
+                              '    </div>' +    
+                              '</div>';
+
+    const overLay = new kakao.maps.CustomOverlay({
+                      content: content,
+                      map: map,
+                      position: locPosition,       
+                  });
+
+    // overLay.setMap(null);   
+    // overLay.setMap(map);
+    
     kakao.maps.event.addListener(marker, "click", function() {
       // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
-      infowindow.setContent(
-        '<div style="padding:5px;font-size:12px;">' + place.place_name + "</div>"
-      );
-      infowindow.open(map, marker);
+      overLay.setMap(null);   
+      overLay.setMap(map);
+      // seracrOverLays.push(overLay);
     });
+    searchOverLays.push(overLay);
   }
 
   // 지도 중심좌표를 접속위치로 변경합니다
@@ -29,6 +51,12 @@ function displayMarker(locPosition, place) {
 function hideMarkers(){
   for(let i=0; i<markers.length; i++){
     markers[i].setMap(null); 
+  }
+}
+
+function closeSearchOverLay(){
+  for(let i=0; i<searchOverLays.length; i++){
+    searchOverLays[i].setMap(null);
   }
 }
 
