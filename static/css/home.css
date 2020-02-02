@@ -269,8 +269,16 @@ body {
   height: 27px;
 }
 .def2 {
+  position: relative;
+  left: 5px;
   width: 27px;
   height: 27px;
+}
+.rest2 {
+  position: relative;
+  right: 20px;
+  width: 31px;
+  height: 26px;
 }
 #foot_text {
   width: 82px;
@@ -293,6 +301,9 @@ body {
   top: 8px;
   width: 15px;
   height: 15px;
+}
+.menu_selected {
+  opacity: 0.3;
 }
 .wrap {font-family: NanumGothic; position: absolute;left: 32px;bottom: 40px;width: 230px;height: 110px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
 .wrap * {padding: 0;margin: 0;}

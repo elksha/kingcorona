@@ -17,9 +17,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>코로나 알리미</title>
         <link href="{% static '/css/normalize.css' %}" rel="stylesheet" type="text/css">
-        <link href="{% static '/css/home.css' %}?type=4" rel="stylesheet" type="text/css">
+        <link href="{% static '/css/home.css' %}?type=6" rel="stylesheet" type="text/css">
         <link href="{% static '/css/common.css' %}" rel="stylesheet" type="text/css">
-        <link href="{% static '/css/modal.css' %}?type=2" rel="stylesheet" type="text/css">
+        <link href="{% static '/css/modal.css' %}?type=3" rel="stylesheet" type="text/css">
 
         <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&display=swap" rel="stylesheet">
     </head>
@@ -73,24 +73,24 @@
                 </div>
 
                 <div class="foot">
-                  <div class="hosp1" onclick="changeMarker('store')">
+                  <div id="hosp1" class="menu_selected" onclick="changeMarker('store')">
                     <img class="hosp2" src="{% static 'img/hosp.png' %}"/><br>
                     <p id="foot_text">주변 진료소보기</p>
                   </div>
-                  <div class="def1" onclick="changeMarker('coffee')">
+                  <div id="def1" class="menu_selected" onclick="changeMarker('coffee')">
                     <img class="def2" src="{% static 'img/def.png' %}"/><br>
                     <p id="foot_text">확진자 방문지보기</p>
                   </div>
-                  <div class="def1" style="visibility: hidden">
-                    <img class="def2" style="visibility: hidden" src="{% static 'img/def.png' %}" /><br>
-                    확진자 경로보기
+                  <div id="rest1" class="none" onclick="changeMarker('carpark')">
+                    <img class="rest2" src="{% static 'img/rest2.png' %}" /><br>
+                    <p id="foot_text">모두보기</p>
                   </div>
                 </div>
 
-                <div class="overfoot2" onclick="changeMarker('carpark')" >
+                {% comment %} <div class="overfoot2" onclick="changeMarker('carpark')" >
                   <img class="rest" src="{% static 'img/rest.png' %}" /><br>
                   <p id="modu">모두보기</p>
-                </div>
+                </div> {% endcomment %}
 
             </div>
 
@@ -166,8 +166,6 @@
           
         createCoffeeMarkers(); // 커피숍 마커를 생성하고 커피숍 마커 배열에 추가합니다
         createStoreMarkers(); // 편의점 마커를 생성하고 편의점 마커 배열에 추가합니다
-
-        changeMarker('coffee');
 
         function createMarkerImage(src, size, options) {
             var markerImage = new kakao.maps.MarkerImage(src, size, options);
@@ -313,21 +311,35 @@
             var level = map.getLevel();
             
             // 지도를 1레벨 내립니다 (지도가 확대됩니다)
-            map.setLevel(level + 1);
+            map.setLevel(5);
+
+            var coffeeMenu = document.getElementById('def1');
+            var storeMenu = document.getElementById('hosp1');
+            var carparkMenu = document.getElementById('rest1');
+
             // 커피숍 카테고리가 클릭됐을 때
             if (type === 'coffee') {
+                coffeeMenu.className = '';
+                storeMenu.className = 'menu_selected';
+                carparkMenu.className = 'menu_selected';
                             
                 // 커피숍 마커들만 지도에 표시하도록 설정합니다
                 setCoffeeMarkers(map);
                 setStoreMarkers(null);
                 
             } else if (type === 'store') { // 편의점 카테고리가 클릭됐을 때
+                coffeeMenu.className = 'menu_selected';
+                storeMenu.className = '';
+                carparkMenu.className = 'menu_selected';
                             
                 // 편의점 마커들만 지도에 표시하도록 설정합니다
                 setCoffeeMarkers(null);
                 setStoreMarkers(map);
                 
             } else if (type === 'carpark') { // 주차장 카테고리가 클릭됐을 때
+                coffeeMenu.className = 'menu_selected';
+                storeMenu.className = 'menu_selected';
+                carparkMenu.className = '';
             
                 // 주차장 마커들만 지도에 표시하도록 설정합니다
                 setCoffeeMarkers(map);
