@@ -327,9 +327,20 @@ body {
 }
 .smallicons {
   position: relative;
-  top: 8px;
+  top: 18px;
+  left : -21px;
   width: 15px;
   height: 15px;
+
+}
+.phone {
+  background-image: url(../img/phone.png);
+  background-size: 100%;
+}
+
+.pin{
+  background-image: url(../img/pin.png);
+  background-size: 100%;
 }
 .menu_selected {
   opacity: 0.3;
@@ -339,7 +350,7 @@ body {
   position: absolute;
   left: 32px;
   bottom: 40px;
-  width: 230px;
+  min-width: 200px;
   height: 110px;
   margin-left: -144px;
   text-align: left;
@@ -353,7 +364,6 @@ body {
   margin: 0;
 }
 .wrap .info {
-  width: 230px;
   height: 100px;
   border-radius: 5px;
   border-bottom: 2px solid #ccc;
@@ -366,6 +376,9 @@ body {
   box-shadow: 0px 1px 2px #888;
 }
 .info .title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 6px 0 0 10px;
   height: 30px;
   background: #eee;

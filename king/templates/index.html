@@ -164,7 +164,8 @@
         storeMarkers = [], // 편의점 마커 객체를 가지고 있을 배열입니다
         coffeeOverlays = [],
         storeOverlays = [],
-          
+        searchOverLays = [];
+
         createCoffeeMarkers(); // 커피숍 마커를 생성하고 커피숍 마커 배열에 추가합니다
         createStoreMarkers(); // 편의점 마커를 생성하고 편의점 마커 배열에 추가합니다
 
@@ -179,7 +180,10 @@
                 position: position,
                 image: image
             });
-            
+            // kakao.maps.event.addListener(marker, 'click', function() {
+            // // 마커 위에 인포윈도우를 표시합니다
+            //   infowindow.open(map, marker);  
+            // });
             return marker;  
         }   
           
@@ -266,8 +270,8 @@
                               '            <div class="desc">' + 
                               '                <div class="ellipsis">' + storePositions[i].roadaddr + '</div>' + 
                               '<div class="telroad" style="display: flex; flex-direction: row; justify-content: space-around; position: relative; right: 10px;">' +
-                              '                <div><img class="smallicons" src="{% static "img/phone.png" %}"/><a href="tel:' + storePositions[i].phone + '" target="_blank" class="link">전화걸기</a></div>' + 
-                              '                <div><img class="smallicons" src="{% static "img/pin.png" %}"/><a href="https://map.kakao.com/link/to/' + storePositions[i].content + ',' + storePositions[i].position_y + ',' + storePositions[i].position_x +'" class="link">길찾기</div>' +
+                              '                <div><div class="smallicons phone"></div><a href="tel:' + storePositions[i].phone + '" target="_blank" class="link">전화걸기</a></div>' + 
+                              '                <div><div class="smallicons pin"></div><a href="https://map.kakao.com/link/to/' + storePositions[i].content + ',' + storePositions[i].position_y + ',' + storePositions[i].position_x +'" class="link">길찾기</div>' +
                               '</div>' +
                               '            </div>' + 
                               '        </div>' + 
@@ -300,6 +304,12 @@
             for (var i = 0; i < storeOverlays.length; i++) {  
                 storeOverlays[i].setMap(map);
             }        
+        }
+
+        function setSearchOverlays(map){
+          for(let i=0; i<searchOverLays.length; i++){
+              searchOverLays[i].setMap(null); 
+            }
         }
 
         setCoffeeMarkers(map);
@@ -365,6 +375,10 @@
         
         function makeClickListener(map, overlay) {
           return function() {
+            setCoffeeOverlays(null);
+            setStoreOverlays(null);
+            setSearchOverlays(null);
+            
             overlay.setMap(null);   
             overlay.setMap(map);
           }
@@ -376,6 +390,13 @@
 
         function closeOverlay2() {
             setCoffeeOverlays(null);
+        }
+
+
+        function closeSearchOverLay(){
+            for(let i=0; i<searchOverLays.length; i++){
+              searchOverLays[i].setMap(null);
+            }
         }
 
         </script>
