@@ -127,11 +127,17 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
+    "/var/www/kingcorona/kingcorona/static/"
 ]
-STATIC_ROOT = os.path.join(BASE_DIR,'public')
 
+STATICFILES_FINDERS =(
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder'
+)
 
 # KAKAO API
 KAKAO_JS_KEY = secrets['KAKAO']['JS_KEY']

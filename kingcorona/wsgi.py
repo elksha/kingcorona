@@ -8,9 +8,11 @@ https://docs.djangoproject.com/en/2.2/howto/deployment/wsgi/
 """
 
 import os
+import sys
+sys.path.insert(0, '/var/www/kingcorona/kingcorona/')
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'kingcorona.settings')
+os.environ["DJANGO_SETTINGS_MODULE"]="personalproject.settings"
 
 application = get_wsgi_application()
