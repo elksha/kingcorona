@@ -1,0 +1,2 @@
+import kingcorona.wsgi
+application=kingcorona.wsgi.application
