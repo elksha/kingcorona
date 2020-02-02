@@ -17,7 +17,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>코로나 알리미</title>
         <link href="{% static '/css/normalize.css' %}" rel="stylesheet" type="text/css">
-        <link href="{% static '/css/home.css' %}?type=3" rel="stylesheet" type="text/css">
+        <link href="{% static '/css/home.css' %}?type=4" rel="stylesheet" type="text/css">
         <link href="{% static '/css/common.css' %}" rel="stylesheet" type="text/css">
         <link href="{% static '/css/modal.css' %}?type=2" rel="stylesheet" type="text/css">
 
@@ -79,7 +79,7 @@
                   </div>
                   <div class="def1" onclick="changeMarker('coffee')">
                     <img class="def2" src="{% static 'img/def.png' %}"/><br>
-                    <p id="foot_text">확진자 경로보기</p>
+                    <p id="foot_text">확진자 방문지보기</p>
                   </div>
                   <div class="def1" style="visibility: hidden">
                     <img class="def2" style="visibility: hidden" src="{% static 'img/def.png' %}" /><br>
@@ -123,7 +123,7 @@
                   <div class="modal-body__text">
                     <div class="modal-body__text-list">내 위치 허용 후, 
                       <br/>
-                      근처 위험 지역과 진료소 확인하기</div>
+                      근처 확진자 방문지역과 진료소 확인하기</div>
                     <div class="modal-body__text-list list-center">내 목적지 근처로 확인하기</div>
                     <div class="modal-body__text-list">코로나 팩트만을 모아놓은 Q & A 확인!</div>
                   </div>
@@ -266,9 +266,9 @@
                               '        <div class="body">' +
                               '            <div class="desc">' + 
                               '                <div class="ellipsis">' + storePositions[i].roadaddr + '</div>' + 
-                              '<div class="telroad" style="display: flex; flex-direction: row; justify-content: space-around; position: relative; right: 5px;">' +
-                              '                <div><a href="tel:' + storePositions[i].phone + '" target="_blank" class="link">전화걸기</a></div>' + 
-                              '                <div><a href="https://map.kakao.com/link/to/' + storePositions[i].content + ',' + storePositions[i].position_y + ',' + storePositions[i].position_x +'" class="link">길찾기</div>' +
+                              '<div class="telroad" style="display: flex; flex-direction: row; justify-content: space-around; position: relative; right: 10px;">' +
+                              '                <div><img class="smallicons" src="{% static "img/phone.png" %}"/><a href="tel:' + storePositions[i].phone + '" target="_blank" class="link">전화걸기</a></div>' + 
+                              '                <div><img class="smallicons" src="{% static "img/pin.png" %}"/><a href="https://map.kakao.com/link/to/' + storePositions[i].content + ',' + storePositions[i].position_y + ',' + storePositions[i].position_x +'" class="link">길찾기</div>' +
                               '</div>' +
                               '            </div>' + 
                               '        </div>' + 

@@ -288,7 +288,13 @@ body {
   margin-block-start: 0.5em;
   margin-block-end: 0.5em;
 }
-.wrap {font-family: NanumGothic; position: absolute;left: 45px;bottom: 40px;width: 230px;height: 110px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+.smallicons {
+  position: relative;
+  top: 8px;
+  width: 15px;
+  height: 15px;
+}
+.wrap {font-family: NanumGothic; position: absolute;left: 32px;bottom: 40px;width: 230px;height: 110px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
 .wrap * {padding: 0;margin: 0;}
 .wrap .info {width: 230px;height: 100px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
 .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
@@ -301,4 +307,4 @@ body {
 .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
 .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
 .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
-.info .link {position: relative; top: 4px; color: #5085BB;}
+.info .link {text-decoration: none; font-family: NanumGothic; position: relative; top: 4px; color: #e55454;}
