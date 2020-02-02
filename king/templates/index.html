@@ -13,7 +13,7 @@
         {% load static %}
         <meta property="og:image" content="{% static '/img/lala.png' %}" />
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>코로나 알리미</title>
         <link href="{% static '/css/normalize.css' %}" rel="stylesheet" type="text/css">
@@ -48,14 +48,15 @@
                     </div>
                     <ul class="menu-all">
                         <div class="menu-logo">코로나 알리미</div>
-                        <button id="ms1" class="menu-select">코로나 Q&A</button>
-                        <p></p>
-                        <button id="ms2" class="menu-select">코로나 제보 게시판</button>
-                        <p></p>
-                        <button id="ms3"  class="menu-select">코로나 토론 게시판</button>
+                        <div class="menu-time">2.2일 09시 기준</div>
+                        <div id="ms1" class="menu-select" >확진자 수(전날대비)</div>
+                        <div class="menu-numbers">15명(0명 증가)</div>
+                        <div id="ms1" class="menu-select" >사망자 수(전날대비)</div>
+                        <div class="menu-numbers">0명(0명 증가)</div>
                         <div class="contact-dev">Contact</div>
                         <div class="menu-info">withjuwon@gmail.com</div>
                         <div class="contact-dev">개발자</div>
+                        <div class="menu-likelion">고려대학교 멋쟁이사자처럼 팀</div>
                         <div class="menu-info">김준태 박지환 이인우 최주원</div>
                     </ul>
                 </nav>
