@@ -150,6 +150,8 @@
           {
             content: '{{ care.title }}',
             latlng: new kakao.maps.LatLng({{ care.position_y }}, {{ care.position_x }}), 
+            position_y: '{{ care.position_y }}',
+            position_x: '{{ care.position_x }}',
             phone: '{{ care.phonenumb }}',
             roadaddr: '{{ care.description }}'
           },
@@ -264,7 +266,10 @@
                               '        <div class="body">' +
                               '            <div class="desc">' + 
                               '                <div class="ellipsis">' + storePositions[i].roadaddr + '</div>' + 
+                              '<div class="telroad" style="display: flex; flex-direction: row; justify-content: space-around; position: relative; right: 5px;">' +
                               '                <div><a href="tel:' + storePositions[i].phone + '" target="_blank" class="link">전화걸기</a></div>' + 
+                              '                <div><a href="https://map.kakao.com/link/to/' + storePositions[i].content + ',' + storePositions[i].position_y + ',' + storePositions[i].position_x +'" class="link">길찾기</div>' +
+                              '</div>' +
                               '            </div>' + 
                               '        </div>' + 
                               '    </div>' +    
