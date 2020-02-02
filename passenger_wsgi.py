@@ -1,9 +1,11 @@
-import os
-import sys
-sys.path.insert(0,'/var/www/kingcorona/kingcorona/')
-
-from django.core.wsgi import get_wsgi_application
-
-os.environ["DJANGO_SETTINGS_MODULE"]="kingcorona.settings"
-
-application=get_wsgi_application()
+import os, sys
+ 
+#automatically finds application's current path
+nginx_configuration= os.path.dirname(__file__)
+project = os.path.dirname(nginx_configuration)
+workspace = os.path.dirname(project)
+sys.path.append(workspace) 
+ 
+os.environ['DJANGO_SETTINGS_MODULE'] = 'testapp.settings'
+import django.core.handlers.wsgi
+application = django.core.handlers.wsgi.WSGIHandler()
