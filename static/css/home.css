@@ -154,33 +154,6 @@
   background-color: #e55454;
   border: none;
 }
-
-@media (max-width: 768px) {
-  .nav {
-    right: -60%;
-    width: 60%;
-  }
-  .nav.active {
-    right: 0%;
-    width: 60%;
-  }
-  .inside-text {
-    font-size: 18px;
-  }
-  .search-input-in {
-    width: 80%;
-  }
-}
-@media (min-width: 768px) {
-  .nav {
-    right: -30%;
-    width: 30%;
-  }
-  .nav.active {
-    right: 0%;
-    width: 30%;
-  }
-}
 .contact-dev {
   margin-top: 30px;
   font-family: NanumGothic;
@@ -319,3 +292,35 @@ body {
 .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
 .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
 .info .link {text-decoration: none; font-family: NanumGothic; position: relative; top: 4px; color: #e55454;}
+
+@media (max-width: 768px) {
+  .nav {
+    right: -60%;
+    width: 60%;
+  }
+  .nav.active {
+    right: 0%;
+    width: 60%;
+  }
+  .inside-text {
+    font-size: 18px;
+  }
+  .search-input-in {
+    width: 80%;
+  }
+}
+@media (max-width: 300px) {
+  #foot_text {
+    font-size: 8px;
+  }
+}
+@media (min-width: 768px) {
+  .nav {
+    right: -30%;
+    width: 30%;
+  }
+  .nav.active {
+    right: 0%;
+    width: 30%;
+  }
+}
