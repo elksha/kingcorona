@@ -1,4 +1,4 @@
-import ox
+import os
 import sys
 sys.path.insert(0,'/var/www/kingcorona/kingcorona/')
 
