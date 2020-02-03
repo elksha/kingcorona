@@ -370,9 +370,9 @@ body {
   margin-left: 10px;
   margin-right: 10px;
   color: #888;
+  -webkit-text-fill-color: #888;
   width: 17px;
   height: 17px;
-  background: url("http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png");
 }
 .info .close:hover {
   cursor: pointer;
