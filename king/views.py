@@ -12,3 +12,6 @@ def index(request):
     cares = Care.objects.all()
     key = settings.KAKAO_JS_KEY
     return render(request, 'index.html', { 'posts' : posts, 'cares' : cares, 'key' : key } )
+    
+def policy(request):
+    return render(request, 'policy.html')
