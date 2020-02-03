@@ -273,7 +273,7 @@
                               '                <div class="ellipsis">' + storePositions[i].roadaddr + '</div>' + 
                               '<div class="telroad" style="display: flex; flex-direction: row; justify-content: space-around; position: relative; right: 10px;">' +
                               '                <div><div class="smallicons phone"></div><a href="tel:' + storePositions[i].phone + '" target="_blank" class="link">전화걸기</a></div>' + 
-                              '                <div><div class="smallicons pin"></div><a target="_blank" href="https://map.kakao.com/link/to/' + storePositions[i].content + ',' + storePositions[i].position_y + ',' + storePositions[i].position_x +'" class="link">길찾기</div>' +
+                              '                <div><div class="smallicons pin"></div><a href="https://map.kakao.com/link/to/' + storePositions[i].content + ',' + storePositions[i].position_y + ',' + storePositions[i].position_x +'" class="link">길찾기</div>' +
                               '</div>' +
                               '            </div>' + 
                               '        </div>' + 
@@ -377,6 +377,10 @@
         
         function makeClickListener(map, overlay) {
           return function() {
+            // const marker = coffeeMarkers[i];
+            if(overlay.getMap()){
+              return overlay.setMap(null);
+            }
             setCoffeeOverlays(null);
             setStoreOverlays(null);
             setSearchOverlays(null);
