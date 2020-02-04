@@ -377,6 +377,10 @@
         
         function makeClickListener(map, overlay) {
           return function() {
+            // const marker = coffeeMarkers[i];
+            if(overlay.getMap()){
+              return overlay.setMap(null);
+            }
             setCoffeeOverlays(null);
             setStoreOverlays(null);
             setSearchOverlays(null);
@@ -403,7 +407,6 @@
 
         </script>
         <script type="text/javascript" src="{% static '/js/modal.js' %}"></script>
-        <script type="text/javascript" src="{% static '/js/alert.js' %}"></script>
         <script type="text/javascript" src="{% static '/js/menu.js' %}"></script>
 
         <script type="module" src="{% static '/js/marker.js' %}"></script>

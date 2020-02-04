@@ -22,16 +22,10 @@ function click() {
 }
 
 function enterkey(event) {
-  if (searchInput.value === null) {
-    alert("목적지를 입력해주세요!");
-    searchInput.focus();
-    return false;
-  }
 
   if (event.keyCode == 13) {
     // 엔터키가 눌렸을 때 실행할 내용
-    ps.keywordSearch(searchInput.value, placesSearchCB);
-    console.log("success search");
+    searchBtn.click();
   }
 }
 

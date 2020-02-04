@@ -328,12 +328,10 @@ body {
   font-family: NanumGothic;
   position: absolute;
   left: 32px;
-  bottom: 40px;
-  min-width: 200px;
+  bottom: 44px;
   height: 110px;
   margin-left: -144px;
   text-align: left;
-  overflow: hidden;
   font-size: 12px;
   font-family: "Malgun Gothic", dotum, "돋움", sans-serif;
   line-height: 1.5;
@@ -381,14 +379,13 @@ body {
   overflow: hidden;
 }
 .info .desc {
+  min-width: 230px;
   position: relative;
-  margin: 6px 0 0 13px;
+  margin: 6px 7px 0 13px;
   height: 75px;
 }
 .desc .ellipsis {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  width : max-content;
 }
 .desc .jibun {
   font-size: 11px;
