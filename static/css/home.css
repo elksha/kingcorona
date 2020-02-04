@@ -329,11 +329,9 @@ body {
   position: absolute;
   left: 32px;
   bottom: 44px;
-  /* min-width: 200px; */
   height: 110px;
   margin-left: -144px;
   text-align: left;
-  /* overflow: hidden; */
   font-size: 12px;
   font-family: "Malgun Gothic", dotum, "돋움", sans-serif;
   line-height: 1.5;
@@ -388,9 +386,6 @@ body {
 }
 .desc .ellipsis {
   width : max-content;
-  /* overflow: auto; */
-  /* text-overflow: ellipsis;
-  white-space: nowrap; */
 }
 .desc .jibun {
   font-size: 11px;
