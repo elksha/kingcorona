@@ -25,7 +25,7 @@ with open(os.path.join(BASE_DIR, 'kingcorona/config/index.json')) as f:
 SECRET_KEY = 'b5p-uvm+b$n)apr%yevrsod8gl-qr!x^788cv@q2em0146bvxh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '127.0.0.1',

@@ -11,18 +11,32 @@ function displayMarker(locPosition, place) {
     position: locPosition
   });
 
+  if (place.place_name.length > 16) {
+    var long3 = "left: -25px;";
+  }else if (place.place_name.length > 13) {
+      var long3 = "left: 3px;";
+  }else if (place.place_name.length > 12) {
+      var long3 = "left: 12px;";
+  }else if (place.place_name.length > 10) {
+      var long3 = "left: 23px;";
+  }else if (place.place_name.length > 9) {
+      var long3 = "left: 32px;";
+  }else {
+      var long3 = "";
+  }
+
   // const infowindow = new kakao.maps.InfoWindow({zIndex:1});
   // 마커에 클릭이벤트를 등록합니다
   if(place){
-    const content = '<div class="wrap" id="overdiv">' + 
-    '    <div class="info">' + 
+    const content = '<div class="wrap" id="overdiv" style="' + long3 + '">' + 
+    '    <div class="info" style="">' + 
     '        <div class="title">' + place.place_name + 
     '            <div id="search-overlay" class="close" onclick="closeSearchOverLay()" title="닫기"></div>' + 
     '        </div>' + 
     '        <div class="body">' +
     '            <div class="desc">' + 
     '                <div class="ellipsis">' + place.address_name + '</div>' + 
-    '<div class="telroad" style="display: flex; flex-direction: row; justify-content: space-around; position: relative; right: 10px;">' +
+    '<div class="telroad" style="display: flex; flex-direction: row; justify-content: space-around; position: relative; margin-left: 5px; bottom: 5px;">' +
     '                <div><div class="smallicons phone"></div><a href="tel:' + place.phone + '" target="_blank" class="link">전화걸기</a></div>' + 
     '                <div><div class="smallicons pin"></div><a href="https://map.kakao.com/link/to/' + place.address_name + ',' + place.y + ',' + place.x +'" class="link">길찾기</div>' +
     '</div>' +

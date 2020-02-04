@@ -71,7 +71,7 @@
   height: 100%;
 }
 .modal-body__text {
-  margin-left: 11px;
+  margin-left: 9px;
   padding-top:28px;
   display: flex;
   flex-direction: column;
@@ -82,6 +82,7 @@
   font-size: 12px;
   font-weight: 800;
   color: #5a5a5a;
+  white-space: nowrap;
   /* padding-top: 24px; */
 }
 .list-center {

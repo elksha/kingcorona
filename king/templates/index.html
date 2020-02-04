@@ -18,9 +18,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>코로나 알리미</title>
         <link href="{% static '/css/normalize.css' %}" rel="stylesheet" type="text/css">
-        <link href="{% static '/css/home.css' %}?type=12" rel="stylesheet" type="text/css">
+        <link href="{% static '/css/home.css' %}?type=15" rel="stylesheet" type="text/css">
         <link href="{% static '/css/common.css' %}" rel="stylesheet" type="text/css">
-        <link href="{% static '/css/modal.css' %}?type=5" rel="stylesheet" type="text/css">
+        <link href="{% static '/css/modal.css' %}?type=6" rel="stylesheet" type="text/css">
 
         <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&display=swap" rel="stylesheet">
     </head>
@@ -53,9 +53,9 @@
                     </div>
                     <ul class="menu-all">
                         <div class="menu-logo">코로나 알리미</div>
-                        <div class="menu-time">2.2일 09시 기준</div>
+                        <div class="menu-time">2월 5일 0시 기준</div>
                         <div id="ms1" class="menu-select" >확진자 수(전날대비)</div>
-                        <div class="menu-numbers">15명(0명 증가)</div>
+                        <div class="menu-numbers">16명(0명 증가)</div>
                         <div id="ms1" class="menu-select" >사망자 수(전날대비)</div>
                         <div class="menu-numbers">0명(0명 증가)</div>
                         <div class="contact-dev">Contact</div>
@@ -208,8 +208,20 @@
                 var markerImage = createMarkerImage(markerImageSrc, imageSize, imageOptions),    
                     marker = createMarker(coffeePositions[i].latlng, markerImage);  
                  
-                var content = '<div class="wrap" id="overdiv">' + 
-                              '    <div class="info" style="">' + 
+                if (coffeePositions[i].desc.length > 60) {
+                  var long = "height: 130px;";
+                }else {
+                  var long = "";
+                } 
+
+                if (coffeePositions[i].desc.length > 60) {
+                  var longinfo = "height: 120px;";
+                }else {
+                  var longinfo = "";
+                }
+
+                var content = '<div class="wrap" id="overdiv" style="' + long + '">' + 
+                              '    <div class="info" style="' + longinfo + '">' + 
                               '        <div class="title">' + coffeePositions[i].content + 
                               '            <div class="close" onclick="closeOverlay2()" title="닫기"></div>' + 
                               '        </div>' + 
@@ -267,15 +279,43 @@
                     content: storePositions[i].content
                 });*/
 
-                var content = '<div class="wrap" id="overdiv">' + 
-                              '    <div class="info">' + 
+                if (storePositions[i].roadaddr.length > 23) {
+                    var long2 = "left: 25px;";
+                }else if (storePositions[i].roadaddr.length > 21) {
+                    var long2 = "left: 32px;";
+                }else if (storePositions[i].roadaddr.length > 20) {
+                    var long2 = "left: 37px;";
+                }else {
+                    var long2 = "";
+                }
+
+                if (storePositions[i].content.length > 16) {
+                    var long2 = "left: -25px;";
+                }else if (storePositions[i].content.length > 13) {
+                    var long2 = "left: 3px;";
+                }else if (storePositions[i].content.length > 12) {
+                    var long2 = "left: 12px;";
+                }else if (storePositions[i].content.length > 10) {
+                    var long2 = "left: 23px;";
+                }else if (storePositions[i].content.length > 9) {
+                    var long2 = "left: 32px;";
+                }
+
+                if (storePositions[i].content.length > 10) {
+                  var longinfo2 = "";
+                }else {
+                  var longinfo2 = "";
+                }
+
+                var content = '<div class="wrap" id="overdiv" style="' + long2 + '">' + 
+                              '    <div class="info" style="' + longinfo2 + '">' + 
                               '        <div class="title">' + storePositions[i].content + 
                               '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
                               '        </div>' + 
                               '        <div class="body">' +
                               '            <div class="desc">' + 
                               '                <div class="ellipsis">' + storePositions[i].roadaddr + '</div>' + 
-                              '<div class="telroad" style="display: flex; flex-direction: row; justify-content: space-around; position: relative; right: 4px; bottom: 5px;">' +
+                              '<div class="telroad" style="display: flex; flex-direction: row; justify-content: space-around; position: relative; margin-left: 5px; bottom: 5px;">' +
                               '                <div><div class="smallicons phone"></div><a href="tel:' + storePositions[i].phone + '" class="link">전화걸기</a></div>' + 
                               '                <div><div class="smallicons pin"></div><a href="https://map.kakao.com/link/to/' + storePositions[i].content + ',' + storePositions[i].position_y + ',' + storePositions[i].position_x +'" class="link">길찾기</div>' +
                               '</div>' +
@@ -410,7 +450,7 @@
         <script type="text/javascript" src="{% static '/js/alert.js' %}"></script>
         <script type="text/javascript" src="{% static '/js/menu.js' %}"></script>
 
-        <script type="module" src="{% static '/js/marker.js' %}"></script>
+        <script type="module" src="{% static '/js/marker.js?type=2' %}"></script>
         <script type="module" src="{% static '/js/currentPos.js' %}"></script>
         <script type="module" src="{% static '/js/searchHandler.js' %}"></script>
     </body>

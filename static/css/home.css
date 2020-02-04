@@ -301,7 +301,7 @@ body {
   text-align: left;
   color: #ffffff;
   white-space: nowrap;
-  margin-block-start: 0.5em;
+  margin-block-start: 0.3em;
   margin-block-end: 0.5em;
 }
 .smallicons {
@@ -328,7 +328,7 @@ body {
 .wrap {
   font-family: NanumGothic;
   position: absolute;
-  left: 46px;
+  left: 42px;
   bottom: 40px;
   min-width: 200px;
   height: 110px;
@@ -382,14 +382,13 @@ body {
   overflow: hidden;
 }
 .info .desc {
+  min-width: 190px;
   position: relative;
-  margin: 6px 0 0 13px;
+  margin: 6px 7px 0 10px;
   height: 75px;
 }
 .desc .ellipsis {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  width : max-content;
 }
 .desc .jibun {
   font-size: 11px;
