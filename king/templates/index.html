@@ -53,9 +53,9 @@
                     </div>
                     <ul class="menu-all">
                         <div class="menu-logo">코로나 알리미</div>
-                        <div class="menu-time">2월 5일 0시 기준</div>
+                        <div class="menu-time">2월 6일 20시 기준</div>
                         <div id="ms1" class="menu-select" >확진자 수(전날대비)</div>
-                        <div class="menu-numbers">16명(0명 증가)</div>
+                        <div class="menu-numbers">19명(3명 증가)</div>
                         <div id="ms1" class="menu-select" >사망자 수(전날대비)</div>
                         <div class="menu-numbers">0명(0명 증가)</div>
                         <div class="contact-dev">Contact</div>
@@ -375,7 +375,7 @@
             var coffeeMenu = document.getElementById('def1');
             var storeMenu = document.getElementById('hosp1');
             var carparkMenu = document.getElementById('rest1');
-
+            
             // 커피숍 카테고리가 클릭됐을 때
             if (type === 'coffee') {
                 coffeeMenu.className = '';
@@ -421,10 +421,14 @@
         
         function makeClickListener(map, overlay) {
           return function() {
+            if(overlay.getMap()){
+              return overlay.setMap(null);
+            }
+
             setCoffeeOverlays(null);
             setStoreOverlays(null);
             setSearchOverlays(null);
-            
+
             overlay.setMap(null);   
             overlay.setMap(map);
           }
@@ -447,11 +451,10 @@
 
         </script>
         <script type="text/javascript" src="{% static '/js/modal.js' %}"></script>
-        <script type="text/javascript" src="{% static '/js/alert.js' %}"></script>
         <script type="text/javascript" src="{% static '/js/menu.js' %}"></script>
 
         <script type="module" src="{% static '/js/marker.js?type=2' %}"></script>
         <script type="module" src="{% static '/js/currentPos.js' %}"></script>
-        <script type="module" src="{% static '/js/searchHandler.js' %}"></script>
+        <script type="module" src="{% static '/js/searchHandler.js?type=3' %}"></script>
     </body>
 </html>

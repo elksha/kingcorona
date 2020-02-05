@@ -10,12 +10,6 @@ searchBtn.addEventListener("click", click);
 searchInput.addEventListener("keyup", enterkey);
 
 function click() {
-  if (!searchInput.value) {
-    alert("목적지를 입력해주세요!");
-    searchInput.focus();
-    return;
-  }
-
   // 키워드로 장소를 검색합니다
   ps.keywordSearch(searchInput.value, placesSearchCB);
   console.log("success search");
