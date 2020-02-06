@@ -53,11 +53,11 @@
                     </div>
                     <ul class="menu-all">
                         <div class="menu-logo">코로나 알리미</div>
-                        <div class="menu-time">2월 6일 20시 기준</div>
+                        <div class="menu-time">{{ sides.uptime }}</div>
                         <div id="ms1" class="menu-select" >확진자 수(전날대비)</div>
-                        <div class="menu-numbers">19명(3명 증가)</div>
+                        <div class="menu-numbers">{{ sides.defnum }}명({{ sides.defnumb }}명 증가)</div>
                         <div id="ms1" class="menu-select" >사망자 수(전날대비)</div>
-                        <div class="menu-numbers">0명(0명 증가)</div>
+                        <div class="menu-numbers">{{ sides.dnum }}명({{ sides.dnumb }}명 증가)</div>
                         <div class="contact-dev">Contact</div>
                         <div class="menu-info">withjuwon@gmail.com</div>
                         <div class="contact-dev">개발자</div>

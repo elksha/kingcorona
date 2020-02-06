@@ -20,3 +20,15 @@ class Care(models.Model):
 
     def __str__(self):
         return self.title
+        
+class Side(models.Model):
+    uptime = models.CharField(max_length=200)
+    defnum = models.CharField(max_length=200)
+    defnumb = models.CharField(max_length=200)
+    dnum = models.CharField(max_length=200)
+    dnumb = models.CharField(max_length=200)
+    cnum = models.CharField(max_length=200)
+    cnumb = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.uptime
